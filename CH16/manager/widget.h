@@ -7,25 +7,31 @@
 #include <QMenuBar>
 
 class QStandardItemModel;
-namespace Ui {
+namespace Ui
+{
 class Widget;
 }
 
 class Widget : public QMainWindow
 {
     Q_OBJECT
-    
+
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
-    enum DateTimeType{Time,Date,DateTime};
-    QString getDateTime(DateTimeType type);
-    QMenu *manageMenu;
-    QMenu *passwordMenu;
+    enum DateTimeType
+    {
+        Time,
+        Date,
+        DateTime
+    };
+    QString  getDateTime(DateTimeType type);
+    QMenu *  manageMenu;
+    QMenu *  passwordMenu;
     QAction *manageAction;
     QAction *chartAction;
     QAction *quitAction;
-    
+
 private slots:
     void on_sellBrandComboBox_currentIndexChanged(const QString &arg1);
 
@@ -52,17 +58,17 @@ private slots:
     void on_factoryComboBox_currentIndexChanged(const QString &arg1);
 
 private:
-    Ui::Widget *ui;
-    QDomDocument doc;
-    bool docRead();
-    bool docWrite();
-    void writeXml();
-    void createNodes(QDomElement &date);
-    void showDailyList();
+    Ui::Widget *        ui;
+    QDomDocument        doc;
+    bool                docRead();
+    bool                docWrite();
+    void                writeXml();
+    void                createNodes(QDomElement &date);
+    void                showDailyList();
     QStandardItemModel *chartModel;
-    void createChartModelView();
-    void showChart();
-    void createMenuBar();
+    void                createChartModelView();
+    void                showChart();
+    void                createMenuBar();
 };
 
-#endif // WIDGET_H
+#endif  // WIDGET_H

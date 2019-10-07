@@ -13,7 +13,8 @@ static bool createConnection()
     db.setDatabaseName("data.db");
     db.setUserName("zhouhejun");
     db.setPassword("123456");
-    if(!db.open()){
+    if(!db.open())
+    {
         //提示出错
         return false;
     }
@@ -49,19 +50,20 @@ static bool createConnection()
 static bool createXml()
 {
     QFile file("data.xml");
-    if(file.exists())return true;
-    if(!file.open(QIODevice::WriteOnly|QIODevice::Truncate))
+    if(file.exists())
+        return true;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
         return false;
-    QDomDocument doc;
+    QDomDocument              doc;
     QDomProcessingInstruction instruction;
-    instruction = doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\"");
+    instruction = doc.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");
     doc.appendChild(instruction);
     QDomElement root = doc.createElement(QString("日销售清单"));
     doc.appendChild(root);
     QTextStream out(&file);
-    doc.save(out,4);
+    doc.save(out, 4);
     file.close();
     return true;
 }
 
-#endif // CONNECTION_H
+#endif  // CONNECTION_H

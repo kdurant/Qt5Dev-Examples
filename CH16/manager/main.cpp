@@ -6,13 +6,18 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    if(!createConnection()||!createXml())return 0;
+    if(!createConnection() || !createXml())
+        return 0;
     Widget w;
+
     LoginDialog dlg;
-    if(dlg.exec()==QDialog::Accepted){
+    if(dlg.exec() == QDialog::Accepted)
+    {
         w.show();
         return a.exec();
-    }else{
+    }
+    else
+    {
         return 0;
     }
 }
